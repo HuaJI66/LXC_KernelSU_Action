@@ -96,6 +96,7 @@ jobs:
         if: env.BUILD_BOOT_IMG == 'true'
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace
+          echo "download boog.img from https://raw.githubusercontent.com/${{ github.actor }}/LXC_KernelSU_Action/${{ env.KERNEL_SOURCE_BRANCH }}/boot/boot.tar.gzip"
           wget https://raw.githubusercontent.com/${{ github.actor }}/LXC_KernelSU_Action/${{ env.KERNEL_SOURCE_BRANCH }}/boot/boot.tar.gzip
           tar -xzvf boot.tar.gz && rm boot.tar.gz && mv boot.img boot-source.img
           if [ -f boot-source.img ]; then
