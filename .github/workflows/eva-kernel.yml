@@ -2,7 +2,7 @@
 name: Eva Kernel Build
 
 on:
-  push:
+  watch: [started]
 
 env:
   BOT_MSG_URL: ${{ secrets.TG_BOT_MSG_URL }}
@@ -10,13 +10,6 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  bot-notify-ci:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Send message
-      run: curl -s -X POST ${{ env.BOT_MSG_URL }} -d chat_id=${{ env.CHAT_ID }} -d "disable_web_page_preview=true" -d "parse_mode=html" -d text="CI kernel build triggered for <b>Alioth and Elish</b>"
-
   build-alioth:
 
     runs-on: ubuntu-latest
