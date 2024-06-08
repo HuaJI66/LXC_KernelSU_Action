@@ -34,7 +34,7 @@ jobs:
         cd ../
     - uses: actions/upload-artifact@main
       with:
-       name: release-zip
+       name: release-alioth-zip
        path: ak3/*.zip
 
   build-alioth-nosdcardfs:
@@ -61,7 +61,7 @@ jobs:
         cd ../
     - uses: actions/upload-artifact@main
       with:
-       name: release-zip
+       name: release-alioth-nosdcardfs-zip
        path: ak3/*.zip
 
   build-elish:
@@ -88,7 +88,7 @@ jobs:
         cd ../
     - uses: actions/upload-artifact@main
       with:
-       name: release-zip
+       name: release-elish-zip
        path: ak3/*.zip
 
   publish-release:
@@ -100,7 +100,7 @@ jobs:
     - name: Restoring artifacts
       uses: actions/download-artifact@main
       with:
-        name: release-zip
+        name: [release-alioth-zip,release-alioth-nosdcardfs-zip,release-elish-zip]
         path: ${{ github.workspace }}
     - name: Release Tag
       id: release_tag
